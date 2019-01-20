@@ -55,7 +55,7 @@
                         </Border>
 
                         <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1">
-                            <Image Name="CashDeskPicture" Margin="10" Source="C:\Users\HP_\source\repos\CameraStatus\Picture\Cash_desk.jpg"/>
+                            <Image Name="CashDeskPicture" Margin="10" Source="Resources/Cash_desk.jpg"/>
                         </Border>
 
                         <Grid Grid.Row="4">
@@ -64,10 +64,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Name="OpenButton" Grid.Column="0" Click="OpenButton_Click" IsEnabled="{Binding IsOpened, Converter={StaticResource OpenButtonConverter}}">
-                                <Image Source="C:\Users\HP_\source\repos\CameraStatus\Picture\open-button-png-hi.png"></Image>
+                                <Image Source="Resources/open-button-png-hi.png"></Image>
                             </Button>
                             <Button Name="CloseButton" Grid.Column="1" Click="CloseButton_Click" IsEnabled="{Binding IsOpened}">
-                                <Image Source="C:\Users\HP_\source\repos\CameraStatus\Picture\close-button-png-hi.png"></Image>
+                                <Image Source="Resources/close-button-png-hi.png"></Image>
                             </Button>
 
 

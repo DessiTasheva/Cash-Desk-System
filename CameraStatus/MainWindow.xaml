@@ -18,22 +18,14 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Content="Camera1" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Grid.Row="0" Grid.Column="1" Content="Camera2" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-        <Button Name="Btn_Add2" Grid.Row="1" Grid.Column="1" Background="Transparent">
-            <Image Name="ButtonAdd2" Source="C:\Users\HP_\source\repos\CameraStatus\Picture\add-circle-green-512.png"/>
+       
+        <Button Name="Btn_Add" Grid.Row="1" Grid.Column="0" Background="Transparent">
+            <Image Name="ButtonAdd1" Source="Resources/add-circle-green-512.png"/>
         </Button>
 
-        <Button Name="Btn_Add1" Grid.Row="1" Grid.Column="0" Background="Transparent">
-            <Image Name="ButtonAdd1" Source="C:\Users\HP_\source\repos\CameraStatus\Picture\add-circle-green-512.png"/>
+        <Button Name="Btn_Substract" Grid.Row="2" Grid.Column="0" Background="Transparent">
+            <Image Name="ButtonSubstract1" Source="Resources/subtract-circle-red-512.png"/>
         </Button>
 
-        <Button Name="Btn_Substract1" Grid.Row="2" Grid.Column="0" Background="Transparent">
-            <Image Name="ButtonSubstract1" Source="C:\Users\HP_\source\repos\CameraStatus\Picture\subtract-circle-red-512.png"/>
-        </Button>
-
-        <Button Name="Btn_Substract2" Grid.Row="2" Grid.Column="1" Background="Transparent">
-            <Image Name="ButtonSubstract2" Source="C:\Users\HP_\source\repos\CameraStatus\Picture\subtract-circle-red-512.png"/>
-        </Button>
     </Grid>
 </Window>

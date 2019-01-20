@@ -28,12 +28,11 @@ namespace CashDeskStatus
     public partial class MainWindow : Window
     {
         public ObservableCollection<CashDeskDto> CashDesk { get; set; }
+        string pictureLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Picture\Cash_desk.jpg");
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            
             CashDesk = new ObservableCollection<CashDeskDto>();
 
             CashDesk.Add(new CashDeskDto(){Id = 1,IsOpened = true, Name = "Cash Desk 1",NumberOfPeople = 2, State = CashState.Yellow});
@@ -42,11 +41,15 @@ namespace CashDeskStatus
             CashDesk.Add(new CashDeskDto() { Id = 4, IsOpened = false, Name = "Cash Desk 4", NumberOfPeople = 0, State = CashState.Green });
             CashDesk.Add(new CashDeskDto() { Id = 5, IsOpened = false, Name = "Cash Desk 5", NumberOfPeople = 0, State = CashState.Green });
             this.DataContext = this;
+
+            
+            
+
         }
 
         private void Window_Loaded(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_Helper(object sender, EventArgs e)
