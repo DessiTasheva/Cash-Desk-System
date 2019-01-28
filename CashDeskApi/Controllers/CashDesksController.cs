@@ -10,15 +10,15 @@ namespace CashDeskApi.Controllers
 {
     public class CashDesksController : ApiController
     {
-        [HttpGet]
+        /*[HttpGet]
         public IList<CashDeskDto> GetAll()
         {
             var desks = GetCashDesks();
             return desks;
-        }
+        }*/
 
 
-        private List<CashDeskDto> GetCashDesks()
+       /* private List<CashDeskDto> GetCashDesks()
         {
             List<CashDeskDto> result = new List<CashDeskDto>();
 
@@ -34,7 +34,7 @@ namespace CashDeskApi.Controllers
             }
 
             return result;
-        }
+        }*/
 
 
     }

@@ -5,27 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CameraStatus"
         mc:Ignorable="d"
-        Title="MainWindow" Height="572.727" Width="1033.766">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        
+        Title="MainWindow" Height="573" Width="1034">
 
-        <Label Grid.Row="0" Grid.Column="0" Content="Camera1" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-       
-        <Button Name="Btn_Add" Grid.Row="1" Grid.Column="0" Background="Transparent">
-            <Image Name="ButtonAdd1" Source="Resources/add-circle-green-512.png"/>
-        </Button>
+    <Window.DataContext>
+        <local:CameraViewModel/>
+    </Window.DataContext>
 
-        <Button Name="Btn_Substract" Grid.Row="2" Grid.Column="0" Background="Transparent">
-            <Image Name="ButtonSubstract1" Source="Resources/subtract-circle-red-512.png"/>
-        </Button>
+    <ListView Name ="MyListView" ItemsSource="{Binding Cameras}">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Grid Name="MainGrid" Height="500" Width="300">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
 
-    </Grid>
+                        <TextBlock Grid.Row="0" Text="{Binding Path=Id, StringFormat='Camera {0}'}" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" FontSize="30"/>
+
+                        <Button Name="Btn_Add" Grid.Row="1" Background="Transparent" 
+                                Command="{Binding ElementName=MyListView,Path=DataContext.AddPeopleCommand}">
+                            <Image Name="ButtonAdd" Source="Resources/add-circle-green-512.png"/>
+                        </Button>
+
+                        <Button Name="Btn_Substract" Grid.Row="2" Background="Transparent"
+                                Command="{Binding ElementName=MyListView,Path=DataContext.RemovePeopleCommand}">
+                            <Image Name="ButtonSubstract" Source="Resources/subtract-circle-red-512.png"/>
+                        </Button>
+
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </Window>
+

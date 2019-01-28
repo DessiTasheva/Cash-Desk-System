@@ -17,7 +17,7 @@ namespace CashDeskApi
 
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(
                 new MediaTypeHeaderValue("ApplicationException/xml"));
-
+            
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

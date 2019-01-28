@@ -4,16 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashDeskStatus"
+        xmlns:viewModels="clr-namespace:CashDeskStatus.ViewModels"
+        xmlns:conv="clr-namespace:CashDeskStatus.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="582.468" Width="1049.351"
         Loaded="Window_Loaded">
+
+    <Window.DataContext>
+        <viewModels:CashDeskViewModel/>
+    </Window.DataContext>
+
     <Window.Resources>
-        <local:EnumToColorConverter x:Key="EnumToColorConverter" />
-        <local:OpenButtonConverter x:Key="OpenButtonConverter" />
+        <conv:EnumToColorConverter x:Key="EnumToColorConverter"/>
+        <conv:OpenButtonConverter x:Key="OpenButtonConverter"/>
     </Window.Resources>
 
-
-    <ListView Name ="MyListView" ItemsSource="{Binding CashDesk}">
+    <ListView Name ="MyListView" ItemsSource="{Binding CashDesks}">
         <ListView.ItemsPanel>
             <ItemsPanelTemplate>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -32,11 +38,11 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Border BorderBrush="Black" BorderThickness="1">
-                            <Label Grid.Row="0" Content="{Binding Name}" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Path=Id, StringFormat='Cash Desk {0}'}" Grid.Row="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
 
                         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                            <TextBlock Text="{Binding Path=NumberOfPeople, StringFormat='Number of People: {0}'}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                         <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
                             <Grid >
@@ -45,7 +51,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Ellipse Grid.Column="1" Fill="{Binding State, 
+                                <Ellipse Grid.Column="1" Fill="{Binding Path=State, 
                             Converter={StaticResource EnumToColorConverter}}" Width="40" Height="40"></Ellipse>
 
 
@@ -63,17 +69,17 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Name="OpenButton" Grid.Column="0" Click="OpenButton_Click" IsEnabled="{Binding IsOpened, Converter={StaticResource OpenButtonConverter}}">
+                            <Button Name="OpenButton" Grid.Column="0" IsEnabled="{Binding Path=isOpen, Converter={StaticResource OpenButtonConverter}}">
                                 <Image Source="Resources/open-button-png-hi.png"></Image>
                             </Button>
-                            <Button Name="CloseButton" Grid.Column="1" Click="CloseButton_Click" IsEnabled="{Binding IsOpened}">
+                            <Button Name="CloseButton" Grid.Column="1" IsEnabled="{Binding Path=isOpen}">
                                 <Image Source="Resources/close-button-png-hi.png"></Image>
                             </Button>
 
 
                         </Grid>
 
-                        <Button Name="Helper" Grid.Row="5" Click="btn_Helper" Content="AddPeople" IsEnabled="{Binding IsOpened}"></Button>
+                        <Button Name="Helper" Grid.Row="5"></Button>
                     </Grid>
 
 

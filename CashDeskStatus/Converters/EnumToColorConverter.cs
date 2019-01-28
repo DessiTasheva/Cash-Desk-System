@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
+using CashDeskApi.Models;
 
-namespace CashDeskStatus
+namespace CashDeskStatus.Converters
 {
     public class EnumToColorConverter : IValueConverter
     {
@@ -19,11 +16,11 @@ namespace CashDeskStatus
 
             switch (enumToConv)
             {
-                case CashState.Green:
+                case CashDeskState.Green:
                     return new SolidColorBrush(Colors.LimeGreen);
-                case CashState.Red:
+                case CashDeskState.Red:
                     return new SolidColorBrush(Colors.Red);
-                case CashState.Yellow:
+                case CashDeskState.Gray:
                     return new SolidColorBrush(Colors.LightGray);
                 default: return Colors.White;  
             }

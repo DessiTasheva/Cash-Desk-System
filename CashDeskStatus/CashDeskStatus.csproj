@@ -66,9 +66,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CashDeskDto.cs" />
-    <Compile Include="OpenButtonConverter.cs" />
-    <Compile Include="EnumToColorConverter.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CashDeskViewModel.cs" />
+    <Compile Include="Converters\OpenButtonConverter.cs" />
+    <Compile Include="Converters\EnumToColorConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -110,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\open-button-png-hi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashDeskApi\CashDeskApi.csproj">
+      <Project>{16b2981f-eb8d-4c24-9267-9dd339bd5661}</Project>
+      <Name>CashDeskApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

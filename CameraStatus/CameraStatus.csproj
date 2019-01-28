@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="CameraViewModel.cs" />
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -99,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\subtract-circle-red-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashDeskApi\CashDeskApi.csproj">
+      <Project>{16b2981f-eb8d-4c24-9267-9dd339bd5661}</Project>
+      <Name>CashDeskApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
