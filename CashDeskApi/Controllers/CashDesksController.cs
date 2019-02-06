@@ -10,34 +10,52 @@ namespace CashDeskApi.Controllers
 {
     public class CashDesksController : ApiController
     {
-        /*[HttpGet]
-        public IList<CashDeskDto> GetAll()
+        public List<CashDeskDto> cashDesks = new List<CashDeskDto>
         {
-            var desks = GetCashDesks();
-            return desks;
-        }*/
+            new CashDeskDto(){CameraId = 1, Id = 1, IsOpen = true, State = CashDeskState.Green},
+            new CashDeskDto(){CameraId = 2, Id = 2, IsOpen = true, State = CashDeskState.Green},
+            new CashDeskDto(){CameraId = 3, Id = 3, IsOpen = true, State = CashDeskState.Green},
+            new CashDeskDto(){CameraId = 4, Id = 4, IsOpen = true, State = CashDeskState.Green},
+        };
 
-
-       /* private List<CashDeskDto> GetCashDesks()
+        // GET api/<controller>
+        [HttpGet]
+        public IEnumerable<CashDeskDto> Get()
         {
-            List<CashDeskDto> result = new List<CashDeskDto>();
+            return cashDesks;
+        }
 
-            int number = new Random().Next(2, 5);
-            for (int i = 0; i < number; i++)
+        // GET api/<controller>/5
+        [HttpGet]
+        public CashDeskDto GetCashDesk(int id)
+        {
+            return cashDesks.FirstOrDefault(c => c.Id == id);
+        }
+
+        [HttpPut]
+        public IHttpActionResult PutCamera(CashDeskDto cashDesk)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+            var existingCashDesk = cashDesks.FirstOrDefault(c => c.Id == cashDesk.Id);
+
+            if (existingCashDesk != null)
             {
-                result.Add(new CashDeskDto()
-                {
-                    Id = i,
-                    Name = "CashDesk " + (i + 1),
-                    IsOpened = i % 2 == 0
-                });
+                existingCashDesk.State = cashDesk.State;
+                existingCashDesk.IsOpen = cashDesk.IsOpen;
+            }
+            else
+            {
+                return NotFound();
             }
 
-            return result;
-        }*/
+
+            return Ok();
+
+        }
 
 
+       
     }
 }
-
-

@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CameraStatus"
         mc:Ignorable="d"
-        
         Title="MainWindow" Height="573" Width="1034">
 
-    <Window.DataContext>
+   <Window.DataContext>
         <local:CameraViewModel/>
     </Window.DataContext>
 
@@ -32,12 +31,14 @@
                                VerticalAlignment="Center" FontSize="30"/>
 
                         <Button Name="Btn_Add" Grid.Row="1" Background="Transparent" 
-                                Command="{Binding ElementName=MyListView,Path=DataContext.AddPeopleCommand}">
+                                Command="{Binding ElementName=MyListView,Path=DataContext.AddPeopleCommand}"
+                                CommandParameter="{Binding Path=Id}">
                             <Image Name="ButtonAdd" Source="Resources/add-circle-green-512.png"/>
                         </Button>
 
                         <Button Name="Btn_Substract" Grid.Row="2" Background="Transparent"
-                                Command="{Binding ElementName=MyListView,Path=DataContext.RemovePeopleCommand}">
+                                Command="{Binding ElementName=MyListView,Path=DataContext.RemovePeopleCommand}"
+                                CommandParameter="{Binding Path=Id}">
                             <Image Name="ButtonSubstract" Source="Resources/subtract-circle-red-512.png"/>
                         </Button>
 

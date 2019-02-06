@@ -1,6 +1,17 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace CashDeskStatus
 {
@@ -9,64 +20,12 @@ namespace CashDeskStatus
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         public MainWindow()
         {
             InitializeComponent();
-            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        private void Window_Loaded(object sender, EventArgs e)
-        {
-            
-        }
-
-        /*private void btn_Helper(object sender, EventArgs e)
-        {
-            Button cmd = (Button)sender;
-            if (cmd.DataContext is CashDesks)
-            {
-                CashDesks cashDesk = (CashDesks)cmd.DataContext;
-                cashDesk.NumberOfPeople += 1;
-                if (cashDesk.NumberOfPeople >= 0 && cashDesk.NumberOfPeople < 2)
-                {
-                    cashDesk.State = CashState.Green;
-                }
-                else if (cashDesk.NumberOfPeople >= 2 && cashDesk.NumberOfPeople < 5)
-                {
-                    cashDesk.State = CashState.Yellow;
-                }
-                else
-                {
-                    cashDesk.State = CashState.Red;
-                }
-            }
-        }
-
-        
-        private void OpenButton_Click(object sender, EventArgs e)
-        {
-            Button cmd = (Button)sender;
-            if (cmd.DataContext is CashDesks)
-            {
-                CashDesks cashDesk = (CashDesks)cmd.DataContext;
-                cashDesk.IsOpened = true;
-                
-            }
-            
-        }
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Button cmd = (Button)sender;
-
-            if (cmd.DataContext is CashDesks)
-            {
-                CashDesks cashDesk = (CashDesks)cmd.DataContext;
-                cashDesk.IsOpened = false;
-            }
-            
-        }*/
-        
+       
     }
 }

@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
 namespace CashDeskApi.Models
 {
     public class CashDeskDto
@@ -6,7 +10,6 @@ namespace CashDeskApi.Models
         public int Id { get; set; }
         public CashDeskState State { get; set; }
         public int CameraId { get; set; }
-        public bool isOpen { get; set; }
+        public bool IsOpen { get; set; }
     }
-
 }
