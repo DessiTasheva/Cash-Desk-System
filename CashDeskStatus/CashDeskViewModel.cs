@@ -84,5 +84,24 @@ namespace CashDeskStatus
 
         }
 
+        public async void CountPeople(object param)
+        {
+            var cashDeskId = (int)param;
+
+            CashDeskDto cashDesk = CashDesks.FirstOrDefault(c => c.Id == cashDeskId);
+
+            if (cashDesk != null)
+            {
+                int cameraId = cashDesk.CameraId;
+                var camera = await ClientHelper.GetCameraAsync($"http://localhost:56985/api/Cameras/{cameraId}");
+                cashDesk.PeopleCount = camera.PeopleIn - camera.PeopleOut;
+                await ClientHelper.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
+            }
+            else
+            {
+                throw new Exception("Wrong cash desk id!");
+            }
+        }
+
     }
 }

@@ -12,10 +12,10 @@ namespace CashDeskApi.Controllers
     {
         public List<CashDeskDto> cashDesks = new List<CashDeskDto>
         {
-            new CashDeskDto(){CameraId = 1, Id = 1, IsOpen = true, State = CashDeskState.Green},
-            new CashDeskDto(){CameraId = 2, Id = 2, IsOpen = true, State = CashDeskState.Green},
-            new CashDeskDto(){CameraId = 3, Id = 3, IsOpen = true, State = CashDeskState.Green},
-            new CashDeskDto(){CameraId = 4, Id = 4, IsOpen = true, State = CashDeskState.Green},
+            new CashDeskDto(){CameraId = 1, Id = 1, IsOpen = true, State = CashDeskState.Green, PeopleCount = 10},
+            new CashDeskDto(){CameraId = 2, Id = 2, IsOpen = true, State = CashDeskState.Green, PeopleCount = 0},
+            new CashDeskDto(){CameraId = 3, Id = 3, IsOpen = true, State = CashDeskState.Green, PeopleCount = 8},
+            new CashDeskDto(){CameraId = 4, Id = 4, IsOpen = true, State = CashDeskState.Green, PeopleCount = 0},
         };
 
         // GET api/<controller>
@@ -42,8 +42,10 @@ namespace CashDeskApi.Controllers
 
             if (existingCashDesk != null)
             {
+                existingCashDesk.Id = cashDesk.Id;
                 existingCashDesk.State = cashDesk.State;
                 existingCashDesk.IsOpen = cashDesk.IsOpen;
+                existingCashDesk.PeopleCount = cashDesk.PeopleCount;
             }
             else
             {

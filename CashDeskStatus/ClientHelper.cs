@@ -44,6 +44,46 @@ namespace CashDeskStatus
 
         }
 
+        public static async Task<CashDeskDto> GetCashDeskAsync(string path)
+        {
+            using (HttpResponseMessage response = await client.GetAsync(path))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    CashDeskDto cashDesk = null;
+                    var Jsonresponse = await client.GetStringAsync(path);
+                    cashDesk = JsonConvert.DeserializeObject<CashDeskDto>(Jsonresponse);
+                    return cashDesk;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
+
+        }
+
+        public static async Task<CameraDto> GetCameraAsync(string path)
+        {
+            using (HttpResponseMessage response = await client.GetAsync(path))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    CameraDto camera = null;
+                    var Jsonresponse = await client.GetStringAsync(path);
+                    camera = JsonConvert.DeserializeObject<CameraDto>(Jsonresponse);
+                    return camera;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
+
+        }
+
         public static async Task<string> ChangeCashDesk(string path, CashDeskDto cashDesk)
         {
             using (HttpResponseMessage response = await

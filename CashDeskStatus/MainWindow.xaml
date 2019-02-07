@@ -39,7 +39,7 @@
                         </Border>
 
                         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                            <TextBlock  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Path=PeopleCount, StringFormat='Number of people: {0}'}"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                         <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
                             <Grid >

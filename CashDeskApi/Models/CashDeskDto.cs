@@ -11,5 +11,6 @@ namespace CashDeskApi.Models
         public CashDeskState State { get; set; }
         public int CameraId { get; set; }
         public bool IsOpen { get; set; }
+        public int PeopleCount { get; set; }
     }
 }

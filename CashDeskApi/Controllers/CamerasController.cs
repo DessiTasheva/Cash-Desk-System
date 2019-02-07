@@ -37,7 +37,8 @@ namespace CashDeskApi.Controllers
         }
 
         // PUT api/<controller>/5
-        public IHttpActionResult PutCamera(int id,[FromBody] CameraDto camera)
+        [HttpPut]
+        public IHttpActionResult PutCamera(CameraDto camera)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid model");
@@ -48,13 +49,14 @@ namespace CashDeskApi.Controllers
             {
                 existingCamera.PeopleIn = camera.PeopleIn;
                 existingCamera.PeopleOut = camera.PeopleOut;
+
             }
             else
             {
                 return NotFound();
             }
 
-
+            
             return Ok();
         }
     }
