@@ -10,7 +10,7 @@ namespace CashDeskApi.Controllers
 {
     public class CashDesksController : ApiController
     {
-        public List<CashDeskDto> cashDesks = new List<CashDeskDto>
+        public static List<CashDeskDto> cashDesks = new List<CashDeskDto>
         {
             new CashDeskDto(){CameraId = 1, Id = 1, IsOpen = true, State = CashDeskState.Green, PeopleCount = 10},
             new CashDeskDto(){CameraId = 2, Id = 2, IsOpen = true, State = CashDeskState.Green, PeopleCount = 0},
@@ -27,11 +27,12 @@ namespace CashDeskApi.Controllers
 
         // GET api/<controller>/5
         [HttpGet]
-        public CashDeskDto GetCashDesk(int id)
+        public CashDeskDto GetCashDeskByCameraId(int id)
         {
-            return cashDesks.FirstOrDefault(c => c.Id == id);
+            return cashDesks.FirstOrDefault(c => c.CameraId == id);
         }
 
+       
         [HttpPut]
         public IHttpActionResult PutCamera(CashDeskDto cashDesk)
         {

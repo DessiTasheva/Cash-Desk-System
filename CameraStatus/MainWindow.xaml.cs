@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using CashDeskApi.Models;
 
 namespace CameraStatus
@@ -25,9 +26,12 @@ namespace CameraStatus
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
+           
         }
+
+        
+
+        
 
         
 

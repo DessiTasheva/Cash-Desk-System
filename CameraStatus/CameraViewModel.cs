@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Input;
+using System.Windows.Threading;
+using CashDeskApi;
 using CashDeskApi.Models;
 using Newtonsoft.Json;
 
 namespace CameraStatus
 {
-    public class CameraViewModel: INotifyPropertyChanged
+    public class CameraViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<CameraDto> cameras = new ObservableCollection<CameraDto>();
+        
 
         public ObservableCollection<CameraDto> Cameras
         {
@@ -28,26 +28,45 @@ namespace CameraStatus
             }
         }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
         public CameraViewModel()
         {
             Cameras = new ObservableCollection<CameraDto>();
-            ClientHelper.Initialize();
-            
+            WebApiService.Initialize();
+
             InitaializeDataAsync();
             AddPeopleCommand = new DelegateCommand(AddPeople);
             RemovePeopleCommand = new DelegateCommand(RemovePeople);
         }
 
-        private async Task InitaializeDataAsync()
+
+
+        /*private async Task InitaializeDataAsync()
         {
-            Cameras = await ClientHelper.GetCamerasAsync("http://localhost:56985/api/Cameras");
+            
+        }*/
+
+        public async Task InitaializeDataAsync()
+        {
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    Cameras = await WebApiService.GetCamerasAsync("http://localhost:56985/api/Cameras");
+                    CheckIfCashDeskIsOpen();
+                    await Task.Delay(1000);
+
+                }
+            });
+
         }
+
 
         public ICommand AddPeopleCommand { protected set; get; }
         public ICommand RemovePeopleCommand { protected set; get; }
@@ -55,14 +74,14 @@ namespace CameraStatus
 
         public async void AddPeople(object param)
         {
-            var cameraId = (int) param;
+            var cameraId = (int)param;
 
             CameraDto camera = Cameras.FirstOrDefault(c => c.Id == cameraId);
 
             if (camera != null)
             {
                 camera.PeopleIn++;
-                await ClientHelper.ChangeCamera("http://localhost:56985/api/Cameras", camera);
+                await WebApiService.ChangeCamera("http://localhost:56985/api/Cameras", camera);
             }
             else
             {
@@ -79,15 +98,26 @@ namespace CameraStatus
             if (camera != null)
             {
                 camera.PeopleOut++;
-                await ClientHelper.ChangeCamera("http://localhost:56985/api/Cameras", camera);
+                await WebApiService.ChangeCamera("http://localhost:56985/api/Cameras", camera);
             }
             else
             {
                 throw new Exception("Wrong camera id!");
             }
-            
+
         }
 
+        public async Task CheckIfCashDeskIsOpen()
+        {
+            foreach (var camera in Cameras)
+            {
+                CashDeskDto cashDesk = await WebApiService
+                    .GetCashDeskAsync($"http://localhost:56985/api/CashDesks/{camera.Id}");
 
+                camera.isCashDeskOpen = cashDesk.IsOpen;
+
+                await WebApiService.ChangeCamera("http://localhost:56985/api/Cameras", camera);
+            }
+        }
     }
 }

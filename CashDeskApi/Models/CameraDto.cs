@@ -10,5 +10,6 @@ namespace CashDeskApi.Models
         public int Id { get; set; }
         public int PeopleIn { get; set; }
         public int PeopleOut { get; set; }
+        public bool isCashDeskOpen { get; set; }
     }
 }

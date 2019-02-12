@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CashDeskApi;
 using CashDeskApi.Models;
 
 namespace CashDeskStatus
@@ -15,8 +17,10 @@ namespace CashDeskStatus
         private ObservableCollection<CashDeskDto> cashDesks;
         public ObservableCollection<CashDeskDto> CashDesks
         {
-            get { return cashDesks;}
-            private set { cashDesks = value;
+            get { return cashDesks; }
+            private set
+            {
+                cashDesks = value;
                 OnPropertyChanged("CashDesks");
             }
         }
@@ -32,17 +36,27 @@ namespace CashDeskStatus
         public CashDeskViewModel()
         {
             CashDesks = new ObservableCollection<CashDeskDto>();
-            ClientHelper.Initialize();
-            
+            WebApiService.Initialize();
+
             InitaializeDataAsync();
 
             OpenCashDeskCommand = new DelegateCommand(OpenCashDesk);
             CloseCashDeskCommand = new DelegateCommand(CloseCashDesk);
         }
 
-        private async Task InitaializeDataAsync()
+        public async Task InitaializeDataAsync()
         {
-            CashDesks = await ClientHelper.GetCashDesksAsync("http://localhost:56985/api/CashDesks");
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    CashDesks = await WebApiService.GetCashDesksAsync("http://localhost:56985/api/CashDesks");
+                    await CountPeople();
+                    await Task.Delay(1000);
+                    
+                }
+            });
+            
         }
 
         public ICommand OpenCashDeskCommand { protected set; get; }
@@ -57,7 +71,7 @@ namespace CashDeskStatus
             if (cashDesk != null)
             {
                 cashDesk.IsOpen = true;
-                await ClientHelper.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
+                await WebApiService.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
             }
             else
             {
@@ -75,7 +89,7 @@ namespace CashDeskStatus
             if (cashDesk != null)
             {
                 cashDesk.IsOpen = false;
-                await ClientHelper.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
+                await WebApiService.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
             }
             else
             {
@@ -84,23 +98,30 @@ namespace CashDeskStatus
 
         }
 
-        public async void CountPeople(object param)
+       
+        public async Task CountPeople()
         {
-            var cashDeskId = (int)param;
-
-            CashDeskDto cashDesk = CashDesks.FirstOrDefault(c => c.Id == cashDeskId);
-
-            if (cashDesk != null)
+            foreach (var cashDesk in CashDesks)
             {
                 int cameraId = cashDesk.CameraId;
-                var camera = await ClientHelper.GetCameraAsync($"http://localhost:56985/api/Cameras/{cameraId}");
+                var camera = await WebApiService.GetCameraAsync($"http://localhost:56985/api/Cameras/{cameraId}");
                 cashDesk.PeopleCount = camera.PeopleIn - camera.PeopleOut;
-                await ClientHelper.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
+                if (cashDesk.PeopleCount < 2)
+                {
+                    cashDesk.State = CashDeskState.Green;
+                }
+                else if(cashDesk.PeopleCount >= 2 && cashDesk.PeopleCount < 5)
+                {
+                    cashDesk.State = CashDeskState.Gray;
+                }
+                else
+                {
+                    cashDesk.State = CashDeskState.Red;
+                }
+                await WebApiService.ChangeCashDesk("http://localhost:56985/api/CashDesks", cashDesk);
             }
-            else
-            {
-                throw new Exception("Wrong cash desk id!");
-            }
+                
+            
         }
 
     }

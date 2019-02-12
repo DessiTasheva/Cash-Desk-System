@@ -12,7 +12,7 @@ namespace CashDeskApi.Controllers
 {
     public class CamerasController : ApiController
     {
-        public List<CameraDto> cameras = new List<CameraDto>()
+        public static List<CameraDto> cameras = new List<CameraDto>()
         {
             new CameraDto() {Id = 1, PeopleIn = 0, PeopleOut = 0},
             new CameraDto() {Id = 2, PeopleIn = 0, PeopleOut = 0},
@@ -49,15 +49,15 @@ namespace CashDeskApi.Controllers
             {
                 existingCamera.PeopleIn = camera.PeopleIn;
                 existingCamera.PeopleOut = camera.PeopleOut;
-
+                existingCamera.isCashDeskOpen = camera.isCashDeskOpen;
             }
             else
             {
                 return NotFound();
             }
 
-            
-            return Ok();
+
+            return Ok(existingCamera);
         }
     }
 }

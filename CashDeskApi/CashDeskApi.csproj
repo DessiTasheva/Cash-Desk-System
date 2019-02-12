@@ -194,6 +194,7 @@
     <Compile Include="Models\CashDeskDto.cs" />
     <Compile Include="Models\CashDeskState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
