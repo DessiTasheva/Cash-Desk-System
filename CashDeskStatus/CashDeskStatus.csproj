@@ -74,6 +74,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CashDeskViewModel.cs" />
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="EnumToColorConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">

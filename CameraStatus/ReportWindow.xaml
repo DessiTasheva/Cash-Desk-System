@@ -16,7 +16,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Window.DataContext>
-        <local:ReportViewModel x:Name="ReportViewModel"></local:ReportViewModel>
+        <local:ReportPageViewModel x:Name="ReportViewModel"></local:ReportPageViewModel>
     </Window.DataContext>
     <Grid Name="MainReportsGrid">
         <Grid.RowDefinitions>

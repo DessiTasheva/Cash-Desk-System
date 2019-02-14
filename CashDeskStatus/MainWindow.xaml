@@ -16,7 +16,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     
     <Window.DataContext>
-        <local:CashDeskViewModel/>
+        <local:MainViewModel/>
     </Window.DataContext>
          
     <Window.Resources>

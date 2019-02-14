@@ -214,7 +214,7 @@
     <Compile Include="Models\DbModels\CameraDb.cs" />
     <Compile Include="Models\DbModels\CashDeskDb.cs" />
     <Compile Include="Models\DbModels\EventDb.cs" />
-    <Compile Include="Models\NewPerson.cs" />
+    <Compile Include="NewPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
     <Compile Include="Repositories\CashDeskRepository.cs" />

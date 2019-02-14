@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Input;
 using System.Windows.Threading;
+using CameraStatus.ViewModels;
 using CashDeskApi;
 using CashDeskApi.Models;
 using CashDeskApi.Repositories;
@@ -71,7 +72,7 @@ namespace CameraStatus
 
                     Cameras = convertedCameras;
                     await CheckIfCashDeskIsOpen();
-                    await Task.Delay(5000);
+                    await Task.Delay(1000);
 
                 }
             });

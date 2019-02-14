@@ -198,3 +198,4 @@ C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.S
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.Migrations.InitialCreate.resources
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.Migrations.Events.resources
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csproj.GenerateResource.cache
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csprojAssemblyReference.cache
