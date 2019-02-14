@@ -192,3 +192,10 @@ C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskA
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.csproj.CopyComplete
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.dll
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.pdb
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.SqlServer.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.SqlServer.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.Migrations.InitialCreate.resources
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.csproj.GenerateResource.cache
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Release\CashDeskApi.Migrations.Events.resources

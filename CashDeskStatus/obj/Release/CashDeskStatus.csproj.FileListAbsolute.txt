@@ -90,3 +90,10 @@ C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\obj\Release\CashDe
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\obj\Release\CashDeskStatus.csproj.CopyComplete
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\obj\Release\CashDeskStatus.exe
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\obj\Release\CashDeskStatus.pdb
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\MaterialDesignColors.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\MaterialDesignThemes.Wpf.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\MaterialDesignThemes.Wpf.pdb
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\MaterialDesignThemes.Wpf.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\obj\Release\App.baml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\EntityFramework.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskStatus\bin\Release\EntityFramework.xml

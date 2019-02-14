@@ -29,12 +29,11 @@ namespace CameraStatus
            
         }
 
-        
 
-        
-
-        
-
-
+        private void Btn_RedirectToReports_OnClick(object sender, RoutedEventArgs e)
+        {
+            var ReportPage = new ReportWindow();
+            ReportPage.Show();
+        }
     }
 }

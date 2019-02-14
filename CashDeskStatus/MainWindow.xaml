@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashDeskStatus"
         mc:Ignorable="d"
-        Title="MainWindow" Height="582.468" Width="1049.351">
+        Title="CashDeskStatus" Height="480" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     
     <Window.DataContext>
         <local:CashDeskViewModel/>
     </Window.DataContext>
-    
+         
     <Window.Resources>
         <local:EnumToColorConverter x:Key="EnumToColorConverter"/>
         <local:OpenButtonConverter x:Key="OpenButtonConverter"/>
@@ -24,27 +32,31 @@
         </ListView.ItemsPanel>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <Grid Name="MainGrid" Height="500" Width="300">
+                <Border BorderBrush="White" BorderThickness="1">
+                    <Grid Name="MainGrid" Height="420" Width="230">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="4.5*"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <TextBlock Text="{Binding Path=Id, StringFormat='Cash Desk {0}'}"  Grid.Row="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="0" Background="#08358f"/>
+
+                        <Border BorderBrush="White" BorderThickness="1">
+                            <TextBlock Text="{Binding Path=Id, StringFormat='Cash Desk {0}'}"  Grid.Row="0" FontSize="35" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Foreground="White" />
                         </Border>
 
-                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                            <TextBlock Text="{Binding Path=PeopleCount, StringFormat='Number of people: {0}'}"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <Border Grid.Row="1" BorderBrush="White" BorderThickness="1">
+                            <TextBlock Text="{Binding Path=PeopleCount, StringFormat='Number of people: {0}'}"  FontFamily="Comic Sans MS"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
-                        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="2" BorderBrush="White" BorderThickness="1">
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
@@ -52,11 +64,12 @@
                             Converter={StaticResource EnumToColorConverter}}" Width="40" Height="40"></Ellipse>
 
 
-                                <Label Grid.Column="0" Content="State of Cash Desk:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
+                                <Label Grid.Column="0" Content="State of Cash Desk:"  FontFamily="Comic Sans MS"
+                                       HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="17"></Label>
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1">
+                        <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
                             <Image Name="CashDeskPicture" Margin="10" Source="Resources/Cash_desk.jpg"/>
                         </Border>
 
@@ -65,15 +78,17 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Name="OpenButton" Grid.Column="0" IsEnabled="{Binding Path=IsOpen, Converter={StaticResource OpenButtonConverter}}"
+                            <Button Name="OpenButton" Grid.Column="0" Content="Open" FontFamily="Comic Sans MS" Foreground="White"
+                                    IsEnabled="{Binding Path=IsOpen, Converter={StaticResource OpenButtonConverter}}"
                                     Command="{Binding ElementName=MyListView, Path=DataContext.OpenCashDeskCommand}"
                                     CommandParameter="{Binding Path=Id}">
-                                <Image Source="Resources/open-button-png-hi.png"></Image>
+                               
                             </Button>
-                            <Button Name="CloseButton" Grid.Column="1" IsEnabled="{Binding Path=IsOpen}"
+                            <Button Name="CloseButton" Grid.Column="1"  Content="Close" FontFamily="Comic Sans MS" Foreground="White"
+                                    IsEnabled="{Binding Path=IsOpen}"
                                     Command="{Binding ElementName=MyListView, Path=DataContext.CloseCashDeskCommand}"
                                     CommandParameter="{Binding Path=Id}">
-                                <Image Source="Resources/close-button-png-hi.png"></Image>
+                               
                             </Button>
 
                         </Grid>

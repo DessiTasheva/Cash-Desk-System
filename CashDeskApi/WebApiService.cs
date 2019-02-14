@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using CashDeskApi.Models;
+using CashDeskApi.Repositories;
 using Newtonsoft.Json;
 
 namespace CashDeskApi
@@ -128,5 +129,34 @@ namespace CashDeskApi
             }
         }
 
+        public static async Task<EventDto> GetEventAsync(string path)
+        {
+            using (HttpResponseMessage response = await client.GetAsync(path))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    EventDto eventDto = null;
+                    var jsonresponse = await client.GetStringAsync(path);
+                    eventDto = JsonConvert.DeserializeObject<EventDto>(jsonresponse);
+                    return eventDto;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
+
+        }
+
+        public static async Task<string> PostEvent(string path, NewPerson newPerson)
+        {
+            using (HttpResponseMessage response = await
+                client.PostAsync(path, new StringContent(JsonConvert.SerializeObject(newPerson), Encoding.UTF8, "application/json")))
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
     }
 }

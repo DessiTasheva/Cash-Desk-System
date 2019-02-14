@@ -5,13 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CameraStatus"
         mc:Ignorable="d"
-        Title="MainWindow" Height="573" Width="1034">
+        Title="CameraStatus" Height="450" Width="600"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
 
    <Window.DataContext>
-        <local:CameraViewModel/>
+        <local:MainViewModel/>
     </Window.DataContext>
+    
+    <Window.Resources>
+        <local:SubstractButtonConverter x:Key="SubstractButtonConverter"></local:SubstractButtonConverter>
+    </Window.Resources>
 
-    <ListView Name ="MyListView" ItemsSource="{Binding Cameras}">
+    <StackPanel>
+        <ListView Name ="MyListView" ItemsSource="{Binding Cameras}" Background="#d4dee4">
         <ListView.ItemsPanel>
             <ItemsPanelTemplate>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -19,37 +32,53 @@
         </ListView.ItemsPanel>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <Grid Name="MainGrid" Height="500" Width="300">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="3*"/>
-                        </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="{Binding Path=Id, StringFormat='Camera {0}'}" HorizontalAlignment="Center"
-                               VerticalAlignment="Center" FontSize="30"/>
+                <Grid Name="MainGrid" Height="300" Width="150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
 
-                        <Button Name="Btn_Add" Grid.Row="1" Background="Transparent" 
+                    <Grid Grid.Row="0" Background="#08358f"/>
+                    <Grid Grid.Row="1" Background="White"/>
+                    <Grid Grid.Row="2" Background="White"/>
+                    
+                    <TextBlock Grid.Row="0" Text="{Binding Path=Id, StringFormat='Camera {0}'}" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" FontSize="30" FontFamily="Comic Sans MS" Foreground="White"/>
+
+                    <Button Name="Btn_Add" Grid.Row="1" Background="Transparent" Height="50"
                                 Command="{Binding ElementName=MyListView,Path=DataContext.AddPeopleCommand}"
                                 CommandParameter="{Binding Path=Id}"
-                                IsEnabled="{Binding isCashDeskOpen}">
-                                
-                            <Image Name="ButtonAdd" Source="Resources/add-circle-green-512.png"/>
-                        </Button>
+                                IsEnabled="{Binding isCashDeskOpen}"
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth4">
 
-                        <Button Name="Btn_Substract" Grid.Row="2" Background="Transparent"
+                        <Image Name="ButtonAdd" Source="Resources/add-circle-green-512.png"/>
+                    </Button>
+
+                    <Button Name="Btn_Substract" Grid.Row="2" Background="Transparent" Height="50"
                                 Command="{Binding ElementName=MyListView,Path=DataContext.RemovePeopleCommand}"
                                 CommandParameter="{Binding Path=Id}"
-                                IsEnabled="{Binding Path=isCashDeskOpen}">
-                            <Image Name="ButtonSubstract" Source="Resources/subtract-circle-red-512.png"/>
-                        </Button>
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                            IsEnabled="{Binding Path=IsRemoveButtonDisabled}">
+                                
+                        <Image Name="ButtonSubstract" Source="Resources/subtract-circle-red-512.png"/>
+                    </Button>
 
-                    </Grid>
-                </Border>
+                    
+
+                </Grid>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+        <Button Name="Btn_RedirectToReports" Height="30" Width="200"
+                Style="{DynamicResource MaterialDesignRaisedButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                Content="Show Report"
+                Click="Btn_RedirectToReports_OnClick"/>
+    </StackPanel>
 
 </Window>
 

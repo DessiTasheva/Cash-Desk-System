@@ -90,3 +90,12 @@ C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\CameraStat
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\CameraStatus.csproj.GenerateResource.cache
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\CameraStatus.csproj.CoreCompileInputs.cache
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\CameraStatus.csproj.CopyComplete
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\MaterialDesignColors.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\EntityFramework.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\bin\Debug\EntityFramework.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\App.baml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\ReportWindow.g.cs
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CameraStatus\obj\Debug\ReportWindow.baml

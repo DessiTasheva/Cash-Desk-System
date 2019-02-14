@@ -7,57 +7,47 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CashDeskApi.Models;
+using CashDeskApi.Repositories;
 
 namespace CashDeskApi.Controllers
 {
     public class CamerasController : ApiController
     {
-        public static List<CameraDto> cameras = new List<CameraDto>()
+        /*public static List<CameraDto> cameras = new List<CameraDto>()
         {
             new CameraDto() {Id = 1, PeopleIn = 0, PeopleOut = 0},
             new CameraDto() {Id = 2, PeopleIn = 0, PeopleOut = 0},
             new CameraDto() {Id = 3, PeopleIn = 0, PeopleOut = 0},
             new CameraDto() {Id = 4, PeopleIn = 0, PeopleOut = 0}
-        };
+        };*/
 
-
+        private CameraRepository cameraRepository = new CameraRepository();
 
         // GET api/<controller>
         [HttpGet]
         public IEnumerable<CameraDto> GetAllCameras()
         {
-            return cameras;
+            return cameraRepository.GetCameras();
         }
 
         // GET api/<controller>/5
         [HttpGet]
         public CameraDto GetCameraById(int id)
         {
-            return cameras.FirstOrDefault(c => c.Id == id);
+            return cameraRepository.GetCameraById(id);
         }
 
         // PUT api/<controller>/5
         [HttpPut]
-        public IHttpActionResult PutCamera(CameraDto camera)
+        public int PutCamera(CameraDto camera)
         {
             if (!ModelState.IsValid)
-                return BadRequest("Not a valid model");
+                throw new Exception("Camera model is not valid");
 
-            var existingCamera = cameras.FirstOrDefault(c => c.Id == camera.Id);
+            int numberOfPeople = cameraRepository.UpdateCamera(camera);
+           
 
-            if (existingCamera != null)
-            {
-                existingCamera.PeopleIn = camera.PeopleIn;
-                existingCamera.PeopleOut = camera.PeopleOut;
-                existingCamera.isCashDeskOpen = camera.isCashDeskOpen;
-            }
-            else
-            {
-                return NotFound();
-            }
-
-
-            return Ok(existingCamera);
+            return numberOfPeople;
         }
     }
 }

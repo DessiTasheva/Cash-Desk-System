@@ -187,8 +187,14 @@ C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\Microsoft.AI.Depe
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\Microsoft.AI.Web.xml
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csprojAssemblyReference.cache
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csproj.CoreCompileInputs.cache
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csproj.CopyComplete
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.dll
 C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.pdb
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.SqlServer.dll
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\bin\EntityFramework.SqlServer.xml
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.Migrations.InitialCreate.resources
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.Migrations.Events.resources
+C:\Users\HP_\Documents\GitHub\Cash-Desk-System\CashDeskApi\obj\Debug\CashDeskApi.csproj.GenerateResource.cache

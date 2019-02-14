@@ -23,7 +23,6 @@ namespace CashDeskStatus
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
        
