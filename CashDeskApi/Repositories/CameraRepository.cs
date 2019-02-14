@@ -12,10 +12,13 @@ namespace CashDeskApi.Repositories
 
         public List<CameraDto> GetCameras()
         {
+            // Get cameras from database
             var cameras = _ctx.Cameras.ToList();
 
+            //New list to keep our CameraDto objects
             List<CameraDto> camerasDto = new List<CameraDto>();
 
+            //Convert all cameras from CameraDb to CameraDto
             foreach (var camera in cameras)
             {
                 CameraDto cameraDto = new CameraDto();
@@ -27,13 +30,16 @@ namespace CashDeskApi.Repositories
                 camerasDto.Add(cameraDto);
             }
 
+
             return camerasDto;
         }
 
         public CameraDto GetCameraById(int id)
         {
+            //Find the camera in the database with the given id
             var camera = _ctx.Cameras.FirstOrDefault(c => c.Id == id);
 
+            //Convert this object to CameraDto
             CameraDto cameraDto = new CameraDto();
 
             cameraDto.Id = camera.Id;
@@ -44,23 +50,28 @@ namespace CashDeskApi.Repositories
             return cameraDto;
         }
 
-        public int UpdateCamera(CameraDto camera)
+        public bool UpdateCamera(CameraDto camera)
         {
+            //Find the given camera in the database
             var cameraDb = _ctx.Cameras.FirstOrDefault(c => c.Id == camera.Id);
 
+            //Check if the object exists
             if (cameraDb != null)
             {
+                //Convert the Dto object to Db object
                 cameraDb.Id = camera.Id;
                 cameraDb.PeopleIn = camera.PeopleIn;
                 cameraDb.PeopleOut = camera.PeopleOut;
                 cameraDb.IsCashDeskOpen = camera.isCashDeskOpen;
                 
+                //Save the updated Db object in the database
                 _ctx.SaveChanges();
-                return cameraDb.PeopleIn - cameraDb.PeopleOut;
+                //If the update is updated return true
+                return true;
             }
             else
             {
-                throw new Exception("Camera does not exist");
+                return false;
             }
             
         }

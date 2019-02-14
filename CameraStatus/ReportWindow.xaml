@@ -49,8 +49,8 @@
                        FontSize="12"></TextBlock>
             <TextBlock Grid.Row="0" 
                        Grid.Column="1" 
-                       Text="{Binding Path=Events.PeopleOut,
-                StringFormat='Count of people who were waiting&#10; to pay in all cash desks: {0}'}" 
+                       Text="{Binding Events.PeopleOut,
+                       StringFormat='Count of people who were waiting&#10; to pay in all cash desks: {0}'}" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="12"></TextBlock>
@@ -62,7 +62,8 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding Path=Key}"
+                            <TextBlock Text="{Binding Path=Key,
+                                       StringFormat='Camera: {0}'}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontSize="16"></TextBlock>

@@ -67,6 +67,10 @@ namespace CameraStatus.ViewModels
             }
         }
 
+        //Helper property for Remove button
+        //If cash desk is closed or there are 0 people
+        //The button must be disabled
+
         private bool isRemoveButtonDisabled;
 
         public bool IsRemoveButtonDisabled

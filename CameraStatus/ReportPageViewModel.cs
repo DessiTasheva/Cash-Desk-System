@@ -24,12 +24,7 @@ namespace CameraStatus
                 OnPropertyChanged("Events");
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+       
         public ReportPageViewModel()
         {
             Events = new ReportViewModel();
@@ -40,10 +35,19 @@ namespace CameraStatus
 
         private async Task InitaializeDataAsync()
         {
-            var eventsDto = await WebApiService.GetEventAsync("http://localhost:56985/api/Report");
+            //Get all events
+            var eventsDto = await WebApiService.GetEventAsync();
+            //Initialize the ReportViewModel
             Events.PeopleIn = eventsDto.PeopleIn;
             Events.PeopleOut = eventsDto.PeopleOut;
             Events.cameraTotal = eventsDto.cameraTotal;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }

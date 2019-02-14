@@ -12,6 +12,7 @@ namespace CashDeskApi.Models
         public int PeopleIn { get; set; }
         public int PeopleOut { get; set; }
         public bool isCashDeskOpen { get; set; }
+        //Checks if currently there are no people at the cash desk
         public bool IsPeopleCountZero { get; set; }
     }
 

@@ -11,14 +11,6 @@ namespace CashDeskApi.Controllers
 {
     public class CashDesksController : ApiController
     {
-        /*public static List<CashDeskDto> cashDesks = new List<CashDeskDto>
-        {
-            new CashDeskDto(){CameraId = 1, Id = 1, IsOpen = true, State = CashDeskState.Green, PeopleCount = 10},
-            new CashDeskDto(){CameraId = 2, Id = 2, IsOpen = true, State = CashDeskState.Green, PeopleCount = 0},
-            new CashDeskDto(){CameraId = 3, Id = 3, IsOpen = true, State = CashDeskState.Green, PeopleCount = 8},
-            new CashDeskDto(){CameraId = 4, Id = 4, IsOpen = true, State = CashDeskState.Green, PeopleCount = 0},
-        };*/
-
         CashDeskRepository cashDeskRepository = new CashDeskRepository();
 
         // GET api/<controller>
@@ -44,7 +36,9 @@ namespace CashDeskApi.Controllers
 
             bool isFound = cashDeskRepository.UpdateCashDesk(cashDesk);
 
-            if(isFound)
+            //Check if the change is done
+
+            if (isFound)
             {
                 return Ok();
             }

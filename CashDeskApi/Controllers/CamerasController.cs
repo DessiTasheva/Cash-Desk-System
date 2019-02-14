@@ -13,14 +13,7 @@ namespace CashDeskApi.Controllers
 {
     public class CamerasController : ApiController
     {
-        /*public static List<CameraDto> cameras = new List<CameraDto>()
-        {
-            new CameraDto() {Id = 1, PeopleIn = 0, PeopleOut = 0},
-            new CameraDto() {Id = 2, PeopleIn = 0, PeopleOut = 0},
-            new CameraDto() {Id = 3, PeopleIn = 0, PeopleOut = 0},
-            new CameraDto() {Id = 4, PeopleIn = 0, PeopleOut = 0}
-        };*/
-
+        
         private CameraRepository cameraRepository = new CameraRepository();
 
         // GET api/<controller>
@@ -39,15 +32,21 @@ namespace CashDeskApi.Controllers
 
         // PUT api/<controller>/5
         [HttpPut]
-        public int PutCamera(CameraDto camera)
+        public IHttpActionResult PutCamera(CameraDto camera)
         {
             if (!ModelState.IsValid)
                 throw new Exception("Camera model is not valid");
 
-            int numberOfPeople = cameraRepository.UpdateCamera(camera);
-           
+            bool isFound = cameraRepository.UpdateCamera(camera);
 
-            return numberOfPeople;
+            //Check if the change is done
+            if (isFound)
+            {
+                return Ok();
+            }
+
+
+            return NotFound();
         }
     }
 }

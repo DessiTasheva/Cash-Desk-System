@@ -15,13 +15,9 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
-   <Window.DataContext>
+    <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    
-    <Window.Resources>
-        <local:SubstractButtonConverter x:Key="SubstractButtonConverter"></local:SubstractButtonConverter>
-    </Window.Resources>
 
     <StackPanel>
         <ListView Name ="MyListView" ItemsSource="{Binding Cameras}" Background="#d4dee4">

@@ -74,6 +74,7 @@ namespace CashDeskApi.Repositories
         {
             EventDb eventDb = new EventDb();
 
+            //It is AddPeopleEvent => PeopleIn = 1
             eventDb.PeopleIn = 1;
             eventDb.PeopleOut = 0;
             eventDb.CameraId = id;
@@ -87,6 +88,7 @@ namespace CashDeskApi.Repositories
         {
             EventDb eventDb = new EventDb();
 
+            //It is RemovePeopleEvent => PeopleOut = 1
             eventDb.PeopleIn = 0;
             eventDb.PeopleOut = 1;
             eventDb.CameraId = id;

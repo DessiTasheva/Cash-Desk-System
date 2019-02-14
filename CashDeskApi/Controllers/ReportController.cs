@@ -27,6 +27,8 @@ namespace CashDeskApi.Controllers
             int id = person.cameraId;
             bool isAdd = person.isAddPeople;
 
+            //Check if we want to post a AddPeopleEvent or RemoveRemoveEvent
+
             if (isAdd)
             {
                 eventRepository.AddPeopleEvent(id);

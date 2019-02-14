@@ -14,6 +14,8 @@ namespace CashDeskStatus
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            //If cash desk state changes
+            //A color indicator also changes
             if (!(value is Enum))
                 throw new ArgumentException("value not of type Enum");
             Enum enumToConv = (Enum)value;
